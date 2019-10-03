@@ -1,9 +1,16 @@
 ---
+title: Help Center
 navigation:
-  - document_one
-  - document: document_two
-    label: Customized Label for Document Two
-  - section: My Section Name
-  - document_three
+  - section: Help Center
+  - document: overview_doc
+    label: Overview
+  - document: data_sources_doc
+    label: Data Sources
+  - document: data_definitions_doc
+    label: Data Definitions
+  - document: faq_doc
+    label: FAQ
+  - document: release_notes_doc
+    label: Release Notes
 ---
 # Quan Quan Tan
