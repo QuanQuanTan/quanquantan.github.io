@@ -12,5 +12,5 @@ navigation:
     label: FAQ
   - document: release_notes_doc
     label: Release Notes
----  
+---
 # Quan Quan Tan
