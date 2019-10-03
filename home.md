@@ -1,3 +1,4 @@
+---
 title: Help Center
 navigation:
   - section: Help Center
@@ -11,5 +12,5 @@ navigation:
     label: FAQ
   - document: release_notes_doc
     label: Release Notes
-  
+---  
 # Quan Quan Tan
