@@ -62,22 +62,22 @@ h1 > a {
     transition: 0.5s;
   }
   
-  .button-active span:after {
+.button-active span:after {
     content: '\00bb';
     opacity: 0;
     top: 0;
     right: -20px;
     transition: 0.5s;
-  }
-  
-  .button-active:hover span {
+}
+
+.button-active:hover span {
     padding-right: 25px;
-  }
-  
-  .button-active:hover span:after {
+}
+
+.button-active:hover span:after {
     opacity: 1;
     right: 0;
-  }
+}
 
 
 .button {
@@ -89,29 +89,29 @@ h1 > a {
     cursor: pointer;
     margin: 5px;
     background-color: lightgray;
-  }
-  
-  .button span {
+}
+
+.button span {
     cursor: pointer;
     transition: 0.5s;
-  }
-  
-  .button span:after {
+}
+
+.button span:after {
     content: '\00bb';
     opacity: 0;
     top: 0;
     right: -20px;
     transition: 0.5s;
-  }
-  
-  .button:hover span {
+}
+
+.button:hover span {
     padding-right: 25px;
-  }
-  
-  .button:hover span:after {
+}
+
+.button:hover span:after {
     opacity: 1;
     right: 0;
-  }
+}
 
 .nav-bar{
     height: 50px;
@@ -178,9 +178,37 @@ h1 > a {
     }
 
     /* nav bar */
+
     .nav-bar {
+        display: block;
         padding: 10px;
         align-items: center;
+        border-bottom: none;
+    }
+    
+    
+    .right-side {
+        margin-top:2vw;
+    }
+    
+    .nav-bar > .left-side > h1{
+        display: flex;
+        justify-content: center;
+        margin-top: auto;
+        margin-bottom: auto;
+
+    }
+    .nav-bar > .right-side{
+        margin-bottom: 100px;
+        border-bottom: 3px solid brown;
+    }
+    
+    .nav-bar > .right-side > div{
+        margin-top: auto;
+        margin-bottom: 2vw;
+        margin-right: auto;
+        font-size: 1.2em;
+        
     }
 
     .button-active {
@@ -196,25 +224,25 @@ h1 > a {
     }
     
     .button-active span {
-    cursor: pointer;
-    transition: 0.5s;
+        cursor: pointer;
+        transition: 0.5s;
     }
     
     .button-active span:after {
-    content: '\00bb';
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
+        content: '\00bb';
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
     }
     
     .button-active:hover span {
-    padding-right: 25px;
+        padding-right: 25px;
     }
     
     .button-active:hover span:after {
-    opacity: 1;
-    right: 0;
+        opacity: 1;
+        right: 0;
     }
     .button {
         border: none;
@@ -228,33 +256,31 @@ h1 > a {
     }
     
     .button span {
-    cursor: pointer;
-    transition: 0.5s;
+        cursor: pointer;
+        transition: 0.5s;
     }
     
     .button span:after {
-    content: '\00bb';
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
+        content: '\00bb';
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
     }
     
     .button:hover span {
-    padding-right: 25px;
+        padding-right: 25px;
     }
     
     .button:hover span:after {
-    opacity: 1;
-    right: 0;
+        opacity: 1;
+        right: 0;
     }
 
     /* Home section */
     .home-main{
-        margin-top: 50px;
+        margin-top: 70px;
         margin-right: 0px;
     }
-
-    /* Resume section */
 
 }
