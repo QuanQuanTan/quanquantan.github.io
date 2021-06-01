@@ -113,7 +113,7 @@ h1 > a {
 /* Home section */
 .home-main{
     margin-top: 80px;
-    margin-right:500px;
+    margin-right:30%;
 }
 /* Resume section */
 .main-section{
@@ -156,3 +156,97 @@ h1 > a {
 }
 
 
+@media screen and (max-width: 800px) {
+    body {
+        font-family: 'Playfair Display', serif;
+        margin-left: 3%;
+        margin-right: 3%;
+        margin-top: 10%;
+    }
+    h1 {
+        font-weight: bold;
+        color: black;
+        font-size: 20px;
+    }
+
+    /* nav bar */
+    .nav-bar {
+        padding: 10px;
+        align-items: center;
+    }
+
+    .button-active {
+        border: none;
+        color: gray;
+        text-align: center;
+        font-size: 15px;
+        width: 70px;
+        cursor: pointer;
+        margin: 5px;
+        background-color: lightgray;
+        text-decoration: gray underline;
+    }
+    
+    .button-active span {
+    cursor: pointer;
+    transition: 0.5s;
+    }
+    
+    .button-active span:after {
+    content: '\00bb';
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    }
+    
+    .button-active:hover span {
+    padding-right: 25px;
+    }
+    
+    .button-active:hover span:after {
+    opacity: 1;
+    right: 0;
+    }
+    .button {
+        border: none;
+        color: gray;
+        text-align: center;
+        font-size: 15px;
+        width: 70px;
+        cursor: pointer;
+        margin: 5px;
+        background-color: lightgray;
+    }
+    
+    .button span {
+    cursor: pointer;
+    transition: 0.5s;
+    }
+    
+    .button span:after {
+    content: '\00bb';
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    }
+    
+    .button:hover span {
+    padding-right: 25px;
+    }
+    
+    .button:hover span:after {
+    opacity: 1;
+    right: 0;
+    }
+
+    /* Home section */
+    .home-main{
+        margin-top: 50px;
+        margin-right: 0px;
+    }
+
+    /* Resume section */
+
+}
