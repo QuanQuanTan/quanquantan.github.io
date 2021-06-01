@@ -166,6 +166,7 @@ h1 > a {
 
 @media screen and (max-width: 1020px) {
     body {
+        font-size: 1.0em;
         font-family: 'Playfair Display', serif;
         margin-left: 3%;
         margin-right: 3%;
