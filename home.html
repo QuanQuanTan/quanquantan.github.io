@@ -2,72 +2,298 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
-    <link rel="stylesheet" href="styles.css">
-    <title>Tan Quan Quan homepage</title>
+    <title>Quan Quan Tan | Cryptography Researcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #e0e0e0;  /* Light text */
+            --secondary-color: #4dabf7;  /* Bright blue accents */
+            --dark-gray: #121212;  /* Dark background */
+            --light-gray: #1e1e1e;  /* Slightly lighter cards */
+            --highlight-color: #ff6b6b;  /* For special highlights */
+            --link-bg: #2d2d2d;  /* Link backgrounds */
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-gray);
+        }
+        
+        header {
+            background-color: #1a1a1a;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo a {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: white;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .hero h2 {
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .hero p {
+            color: #a0a0a0;
+        }
+        
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            padding: 3rem 0;
+        }
+        
+        .about-photo {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        
+        .about-photo img {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        
+        .about-text ul {
+            padding-left: 20px;
+            color: #a0a0a0;
+        }
+        
+        .about-text li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .about-text p {
+            color: #a0a0a0;
+        }
+        
+        .research {
+            padding: 3rem 0;
+            background-color: var(--light-gray);
+        }
+        
+        .research h3 {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+        
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .research-item {
+            background-color: var(--link-bg);
+            padding: 1.5rem;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .research-item h4 {
+            color: var(--secondary-color);
+            margin-top: 0;
+        }
+        
+        .contact {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        .contact h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--link-bg);
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border: 1px solid #3d3d3d;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-links a:hover {
+            background-color: var(--secondary-color);
+            color: #121212;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            background-color: #1a1a1a;
+            color: var(--primary-color);
+        }
+        /* .crop-container {
+            width: 300px;  /* Desired width */
+            height: 200px; /* Desired height */
+            overflow: hidden; /* Hides the excess parts */
+        }
+
+        .cropped-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Crop to fill the container */
+            object-position: center; /* Center the crop */
+        } */
+        
+        @media (max-width: 768px) {
+            .about {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .contact-links {
+                gap: 1rem;
+            }
+        }
+    </style>
 </head>
-<body style="background-color: lightgray;">
-    <div class="title">
-        <div class="nav-bar">
-            <div class="left-side">
-                <h1><a href="home.html">Quan Quan, Tan</a></h1>
-            </div>
-            <div class="right-side">
-                <div class="button-active">
-                    <a href="home.html"><button class="button-active" style="vertical-align:middle"><span>Home</span></button></a>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="home.html">Quan Quan, Tan</a>
                 </div>
-                <div class="button">
-                    <a href="resume.html"><button class="button" style="vertical-align:middle"><span>Resume</span></button></a>
+                <div class="nav-links">
+                    <a href="home.html" class="active">Home</a>
+                    <!-- <a href="resume.html">Resume</a> -->
+                    <a href="publications.html">Publications</a>
                 </div>
-                <div class="button">
-                    <a href="publications.html"><button class="button" style="vertical-align:middle"><span>Publications</span></button></a>
-                </div>
-            </div>
+            </nav>
         </div>
-    </div>
-    <div class="home-main">
-        <div class="about-me-main">
-            <div class="about-header">
-                <div class="small-header">
-                    <h1>About me</h1>
-                </div>
-            </div>
-            <div class="intro">
-                <p>I am currently working as a cybersecurity engineer at the Centre for Strategic Infocomm Technologies (CSIT), Singapore.
-                </p>
-                <p>
-                    In 2023, I obtained my Ph.D. from the Division of Mathematical Sciences at Nanyang Technological University (NTU), Singapore, under the supervision of 
-                    Thomas Peyrin. My Ph.D. thesis, titled "Cryptanalysis of Lightweight Symmetric-Key Cryptographic Algorithms," focused on developing and automating
-                    tools to assist in the cryptanalysis of symmetric-key ciphers. Prior to this, I earned my B.Sc. in Mathematical Sciences with a specialization 
-                    in Applied Mathematics, as well as an M.Sc. (Research) in Mathematical Sciences from NTU. My master's research centered on optimization techniques 
-                    in the implementation of block ciphers.
-                    My research interests include developing automated tools for cryptanalysis and designing secure symmetric key primitives.
-                    More generally, I am keen to explore anything related to cryptography.
-                </p>
-            </div>
-        </div>
-        
-        
+    </header>
 
-        <div class="contact-main">
-            <div class="contact-header">
-                <div class="small-header">
-                    <h1>Contact Info</h1>
-                </div>
-            </div>
-            <div class="contact">
-                <p>Email: quanquan001[at]e.ntu.edu.sg</p>
-                <p>Google Scholar:  <a href=https://scholar.google.com/citations?user=PCSwBWkAAAAJ&hl=en&oi=ao" target="_blank"> Google Scholar profile</a></p>
-                <p>Linkedin:  <a href="https://www.linkedin.com/in/tanquanquan/" target="_blank"> Linkedin profile</a></p>
-            </div>
+    <section class="hero">
+        <div class="container">
+            <h1>Quan Quan, Tan</h1>
+            <h2>Cryptographer</h2>
+            <p>Developing automated cryptanalysis tools & secure symmetric-key primitives.</p>
         </div>
+    </section>
+
+    <div class="container">
+        <section class="about">
+            <div class="about-photo">
+                <img src="DSC_7619.jpg" alt="Quan Quan Tan">
+            </div>
+            <div class="about-text">
+                <h3>About Me</h3>
+                <p>I am a Research Fellow at Nanyang Technological University (NTU), Singapore, specializing in symmetric-key cryptanalysis and automation tools.</p>
+                <ul>
+                    <li>Former Cybersecurity Engineer at CSIT, Singapore (close to 2 years experience)</li>
+                    <li>Ph.D. in Mathematical Sciences (NTU, 2023) under Prof. Thomas Peyrin</li>
+                    <li>Thesis: "Cryptanalysis of Lightweight Symmetric-Key Cryptographic Algorithms"</li>
+                    <li>B.Sc. and M.Sc. in Mathematical Sciences from NTU</li>
+                    <li>Master's research: Optimization techniques for block cipher hardware implementations</li>
+                </ul>
+                <p>My research interests lie in cryptography. Particularly, in automation—designing secure symmetric-key primitives and developing advanced tools for cryptanalysis.</p>
+            </div>
+        </section>
+
+        <section class="contact">
+            <h3>Contact</h3>
+            <div class="contact-links">
+                <a href="mailto:quanquan001@e.ntu.edu.sg"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://scholar.google.com/citations?user=PCSwBWkAAAAJ&hl=en&oi=ao" target="_blank"><i class="fas fa-graduation-cap"></i> Google Scholar</a>
+                <a href="https://www.linkedin.com/in/tanquanquan/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </section>
     </div>
 
-
-
+    <footer>
+        <div class="container">
+            <p></p>
+        </div>
+    </footer>
 </body>
 </html>

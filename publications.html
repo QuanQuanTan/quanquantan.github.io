@@ -2,159 +2,494 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
-    <link rel="stylesheet" href="styles.css">
-    <title>Resume</title>
+    <title>Publications | Dr. Tan Quan Quan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #e0e0e0;  /* Light text */
+            --secondary-color: #4dabf7;  /* Bright blue accents */
+            --dark-gray: #121212;  /* Dark background */
+            --light-gray: #1e1e1e;  /* Slightly lighter cards */
+            --highlight-color: #ff6b6b;  /* Award badge color */
+            --link-bg: #2d2d2d;  /* Link backgrounds */
+            --tab-active: #2d2d2d;  /* Active tab */
+            --tab-inactive: #1a1a1a;  /* Inactive tabs */
+            --border-color: #3d3d3d;  /* Borders and dividers */
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark-gray);
+        }
+        
+        header {
+            background-color: #1a1a1a;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo a {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding-bottom: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .page-header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+        }
+        
+        .page-header h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            color: #a0a0a0;
+        }
+        
+        /* Tab Styles */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .tab-button {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--tab-inactive);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            border-radius: 6px 6px 0 0;
+            margin: 0 0.2rem;
+        }
+        
+        .tab-button:hover {
+            background-color: #2d2d2d;
+        }
+        
+        .tab-button.active {
+            background-color: var(--tab-active);
+            color: var(--secondary-color);
+            box-shadow: 0 -2px 0 var(--secondary-color) inset;
+            font-weight: 600;
+        }
+        
+        .tab-content {
+            display: none;
+            background-color: var(--light-gray);
+            padding: 2rem;
+            border-radius: 0 8px 8px 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .year-header {
+            margin: 1.5rem 0 1rem 0;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .publication-item {
+            margin-bottom: 1.8rem;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+        
+        .publication-item:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.4em;
+            height: 0.8em;
+            width: 0.8em;
+            background: var(--secondary-color);
+            border-radius: 50%;
+        }
+        
+        .publication-title {
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+            color: var(--primary-color);
+        }
+        
+        .publication-authors {
+            color: #a0a0a0;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+        }
+        
+        .publication-venue {
+            display: inline-block;
+            margin-left: 0.5rem;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+        
+        .publication-links {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .pub-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background-color: var(--link-bg);
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border-color);
+        }
+        
+        .pub-link:hover {
+            background-color: var(--secondary-color);
+            color: #121212;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .pub-link i {
+            font-size: 0.8rem;
+        }
+        
+        .award-badge {
+            display: inline-block;
+            background-color: var(--highlight-color);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: #1a1a1a;
+            color: var(--primary-color);
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .tab-button {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .tab-content {
+                padding: 1.5rem;
+            }
+            
+            .publication-links {
+                gap: 0.5rem;
+            }
+        }
+    </style>
 </head>
-<body style="background-color: lightgray;">
-    <div class="title">
-        <div class="nav-bar">
-            <div class="left-side">
-                <h1><a href="home.html">Quan Quan, Tan</a></h1>
-            </div>
-            <div class="right-side">
-                <div class="button">
-                    <a href="home.html"><button class="button" style="vertical-align:middle"><span>Home</span></button></a>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="home.html">Quan Quan, Tan</a>
                 </div>
-                <div class="button">
-                    <a href="resume.html"><button class="button" style="vertical-align:middle"><span>Resume</span></button></a>
+                <div class="nav-links">
+                    <a href="home.html">Home</a>
+                    <!-- <a href="resume.html">Resume</a> -->
+                    <a href="publications.html" class="active">Publications</a>
                 </div>
-                <div class="button-active">
-                    <a href="publications.html"><button class="button-active" style="vertical-align:middle"><span>Publications</span></button></a>
-                </div>
-            </div>
+            </nav>
         </div>
-    </div>
-    <div class="research-main">
-        <div class="research">
-            <div class="small-title">
-                <div class="research-title">
-                    <h1>Journal/Conference publications</h1>
+    </header>
+
+    <div class="container">
+        <section class="page-header">
+            <h1>Publications</h1>
+            <p>My research contributions in cryptography</p>
+        </section>
+
+        <!-- Tab Links -->
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'conference')">Conference Papers</button>
+            <button class="tab-button" onclick="openTab(event, 'preprints')">Preprints</button>
+            <button class="tab-button" onclick="openTab(event, 'theses')">Theses</button>
+        </div>
+
+        <!-- Conference Papers Tab -->
+        <div id="conference" class="tab-content active">
+            <div class="year-header">
+                <h3>2025</h3>
+            </div>
+            <div class="publication-item">
+                <div class="publication-title">Meet-in-the-Middle Attack on 4+4 Rounds of SCARF under Single-Tweak Setting</div>
+                <div class="publication-authors">Siwei Chen, Kai Hu, Guozhen Liu, Zhongfeng Niu, Quan Quan Tan, Shichang Wang</div>
+                <span class="publication-venue">Designs, Codes and Cryptography (DCC)</span>
+                <div class="publication-links">
+                    <a href="https://eprint.iacr.org/2024/1270" target="_blank" class="pub-link">
+                        <i class="fas fa-file-alt"></i> eprint
+                    </a>
+                    <a href="https://doi.org/10.1007/s10623-025-01596-x" target="_blank" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> doi
+                    </a>
+                    
                 </div>
             </div>
-            <div class="research-body">
-                <div class="year-header">
-                    <h3>2025</h3>
+            
+            <div class="year-header">
+                <h3>2023</h3>
+            </div>
+            <div class="publication-item">
+                <div class="publication-title">Revisiting Higher-Order Differential-Linear Attacks from an Algebraic Perspective</div>
+                <div class="publication-authors">Kai Hu, Thomas Peyrin, Quan Quan Tan, Trevor Yap</div>
+                <span class="publication-venue">ASIACRYPT 2023</span>
+                <div class="publication-links">
+                    <a href="https://eprint.iacr.org/2022/1335" target="_blank" class="pub-link">
+                        <i class="fas fa-file-alt"></i> eprint
+                    </a>
+                    <a href="https://doi.org/10.1007/978-981-99-8727-6_14" target="_blank" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> doi
+                    </a>
                 </div>
-                <div class="link-wrapper">
-                    <div class="small-enumeration-list">
-                        <ul>
-                            <li>"Meet-in-the-Middle Attack on 4+4 Rounds of SCARF under Single-Tweak Setting", Siwei Chen and Kai Hu and Guozhen Liu and Zhongfeng Niu and Quan Quan Tan and Shichang Wang - Designs, Codes and Cryptography (DCC) [
-                                <a href="https://eprint.iacr.org/2024/1270" target="_blank">eprint</a> ]
-                            </li>
-                        </ul>
-                    </div>
+            </div>
+            
+            <div class="year-header">
+                <h3>2022</h3>
+            </div>
+            <div class="publication-item">
+                <div class="publication-title">Mind Your Path: on (Key) Dependencies in Differential Characteristics</div>
+                <div class="publication-authors">Thomas Peyrin, Quan Quan Tan</div>
+                <span class="publication-venue">Fast Software Encryption (FSE) 2022</span>
+                <span class="award-badge">Best Paper Award</span>
+                <div class="publication-links">
+                    <a href="https://eprint.iacr.org/2022/1734" target="_blank" class="pub-link">
+                        <i class="fas fa-file-alt"></i> eprint
+                    </a>
+                    <a href="https://doi.org/10.46586/tosc.v2022.i4.179-207" target="_blank" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> doi
+                    </a>
                 </div>
-                <div class="year-header">
-                    <h3>2023</h3>
+            </div>
+            
+            <div class="year-header">
+                <h3>2021</h3>
+            </div>
+            <div class="publication-item">
+                <div class="publication-title">Exploring Differential-Based Distinguishers and Forgeries for ASCON</div>
+                <div class="publication-authors">David Gerault, Thomas Peyrin, Quan Quan Tan</div>
+                <span class="publication-venue">Fast Software Encryption (FSE) 2021</span>
+                <div class="publication-links">
+                    <a href="https://eprint.iacr.org/2021/1103" target="_blank" class="pub-link">
+                        <i class="fas fa-file-alt"></i> eprint
+                    </a>
+                    <a href="https://doi.org/10.46586/tosc.v2021.i3.102-136" target="_blank" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> doi
+                    </a>
                 </div>
-                <div class="link-wrapper">
-                    <div class="small-enumeration-list">
-                        <ul>
-                            <li>"Revisiting Higher-Order Differential-Linear Attacks from an Algebraic Perspective", Kai Hu and Thomas Peyrin and Quan Quan Tan and Trevor Yap - ASIACRYPT 2023 [
-                                 <a href="https://eprint.iacr.org/2022/1335" target="_blank"> eprint</a> | <a href="https://doi.org/10.1007/978-981-99-8727-6_14" target="_blank">doi</a> ]
-                            </li>
-                        </ul>
-                    </div>
+            </div>
+            <div class="publication-item">
+                <div class="publication-title">A Deeper Look at Machine Learning-Based Cryptanalysis</div>
+                <div class="publication-authors">Adrien Benamira, David Gerault, Thomas Peyrin, Quan Quan Tan</div>
+                <span class="publication-venue">EUROCRYPT 2021</span>
+                <div class="publication-links">
+                    <a href="https://eprint.iacr.org/2021/287" target="_blank" class="pub-link">
+                        <i class="fas fa-file-alt"></i> eprint
+                    </a>
+                    <a href="https://doi.org/10.1007/978-3-030-77870-5_28" target="_blank" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> doi
+                    </a>
                 </div>
-                <div class="year-header">
-                    <h3>2022</h3>
-                </div>
-                <div class="link-wrapper">
-                    <div class="small-enumeration-list">
-                        <ul>
-                            <li>"Mind Your Path: on (Key) Dependencies in Differential Characteristics", Thomas Peyrin and Quan Quan Tan - Fast Software Encryption (FSE) 2022 <span style="color:red"><u>(Best Paper Award)</u></span> [
-                                <a href="https://eprint.iacr.org/2022/1734" target="_blank"> eprint</a> | <a href="https://doi.org/10.46586/tosc.v2022.i4.179-207" target="_blank">doi</a> ]
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="year-header">
-                    <h3>2021</h3>
-                </div>
-                <div class="link-wrapper">
-                    <div class="small-enumeration-list">
-                        <ul>
-                            <li>"Exploring Differential-Based Distinguishers and Forgeries for ASCON", David Gerault and Thomas Peyrin and Quan Quan Tan - Fast Software Encryption (FSE) 2021 [
-                                <a href="https://eprint.iacr.org/2021/1103" target="_blank"> eprint</a> | <a href="https://doi.org/10.46586/tosc.v2021.i3.102-136" target="_blank">doi</a> ]
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="link-wrapper">
-                    <div class="small-enumeration-list">
-                        <ul>
-                            <li>"A Deeper Look at Machine Learning-Based Cryptanalysis", Adrien Benamira and David Gerault and Thomas Peyrin and Quan Quan Tan - Eurocrypt 2021 [
-                                <a href="https://eprint.iacr.org/2021/287" target="_blank"> eprint</a> | <a href="https://doi.org/10.1007/978-3-030-77870-5_28" target="_blank">doi</a> ]
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="year-header">
-                    <h3>2020</h3>
-                </div>
-                <div class="link-wrapper">
-                    <div class="small-enumeration-list">
-                        <ul>
-                            <li>"Improved Heuristics for Short Linear Programs", Quan Quan Tan and Thomas Peyrin - Conference on Cryptographic Hardware and Embedded Systems (CHES) 2020 [
-                                <a href="https://eprint.iacr.org/2019/847" target="_blank"> eprint</a> | <a href="https://doi.org/10.13154/tches.v2020.i1.203-230" target="_blank">doi</a> ]
-                            </li>
-                        </ul>
-                    </div>
+            </div>
+            
+            <div class="year-header">
+                <h3>2020</h3>
+            </div>
+            <div class="publication-item">
+                <div class="publication-title">Improved Heuristics for Short Linear Programs</div>
+                <div class="publication-authors">Quan Quan Tan, Thomas Peyrin</div>
+                <span class="publication-venue">Conference on Cryptographic Hardware and Embedded Systems (CHES) 2020</span>
+                <div class="publication-links">
+                    <a href="https://eprint.iacr.org/2019/847" target="_blank" class="pub-link">
+                        <i class="fas fa-file-alt"></i> eprint
+                    </a>
+                    <a href="https://doi.org/10.13154/tches.v2020.i1.203-230" target="_blank" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> doi
+                    </a>
                 </div>
             </div>
         </div>
 
-
-        <div class="Preprints">
-            <div class="small-title">
-                <div class="preprints-title">
-                    <h1>Preprints</h1>
+        <!-- Preprints Tab -->
+        <div id="preprints" class="tab-content">
+            <div class="year-header">
+                <h3>2025</h3>
+            </div>
+            <div class="publication-item">
+                <div class="publication-title">AsconAEAD128 Revisited in the Multi-user Setting</div>
+                <div class="publication-authors">Bishwajit Chakraborty, Mridul Nandi, Soumit Pal, Thomas Peyrin, Quan Quan Tan</div>
+                <div class="publication-links">
+                    <a href=https://eprint.iacr.org/2025/984 target="_blank" class="pub-link">
+                        <i class="fas fa-file-alt"></i> eprint
+                    </a>
                 </div>
             </div>
             <div class="year-header">
                 <h3>2024</h3>
             </div>
-            <div class="link-wrapper">
-                <div class="small-enumeration-list">
-                    <ul>
-                        <li>"uKNIT: Breaking Round-alignment for Cipher Design -- Featuring uKNIT-BC, an Ultra Low-Latency Block Cipher", Kai Hu and Mustafa Khairallah and Thomas Peyrin and Quan Quan Tan [
-                            <a href="https://eprint.iacr.org/2024/1962" target="_blank">eprint</a>]
-                        </li>
-                    </ul>
+            <div class="publication-item">
+                <div class="publication-title">uKNIT: Breaking Round-alignment for Cipher Design -- Featuring uKNIT-BC, an Ultra Low-Latency Block Cipher</div>
+                <div class="publication-authors">Kai Hu, Mustafa Khairallah, Thomas Peyrin, Quan Quan Tan</div>
+                <div class="publication-links">
+                    <a href="https://eprint.iacr.org/2024/1962" target="_blank" class="pub-link">
+                        <i class="fas fa-file-alt"></i> eprint
+                    </a>
                 </div>
             </div>
         </div>
 
-
-        <div class="thesis">
-            <div class="small-title">
-                <div class="thesis-title">
-                    <h1>Theses</h1>
-                </div>
-            </div>
+        <!-- Theses Tab -->
+        <div id="theses" class="tab-content">
             <div class="year-header">
                 <h3>2024</h3>
             </div>
-            <div class="link-wrapper">
-                "Cryptanalysis of lightweight symmetric-key cryptographic algorithms", Tan, Quan Quan [
-                <a href="10.32657/10356/173124" target="_blank">doi</a>
-                ]
+            <div class="publication-item">
+                <div class="publication-title">Cryptanalysis of lightweight symmetric-key cryptographic algorithms</div>
+                <div class="publication-authors">Tan, Quan Quan</div>
+                <div class="publication-links">
+                    <a href="https://doi.org/10.32657/10356/173124" target="_blank" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> doi
+                    </a>
+                </div>
             </div>
+            
             <div class="year-header">
                 <h3>2019</h3>
             </div>
-            <div class="link-wrapper">
-                "Optimising implementation of block ciphers", Tan, Quan Quan [
-                <a href="https://doi.org/10.32657%2F10220%2F49160" target="_blank">doi</a>
-                ]
+            <div class="publication-item">
+                <div class="publication-title">Optimising implementation of block ciphers</div>
+                <div class="publication-authors">Tan, Quan Quan</div>
+                <div class="publication-links">
+                    <a href="https://doi.org/10.32657%2F10220%2F49160" target="_blank" class="pub-link">
+                        <i class="fas fa-external-link-alt"></i> doi
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
+    <footer>
+
+    </footer>
+
+    <script>
+        function openTab(evt, tabName) {
+            // Hide all tab contents
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // Remove active class from all tab buttons
+            var tabButtons = document.getElementsByClassName("tab-button");
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            // Show the current tab and add active class to the button
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+            
+            // Optional: Store the active tab in localStorage
+            localStorage.setItem('lastActiveTab', tabName);
+        }
+        
+        // Optional: Load the last active tab from localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            var lastActiveTab = localStorage.getItem('lastActiveTab');
+            if (lastActiveTab) {
+                document.getElementById(lastActiveTab).classList.add("active");
+                var buttons = document.getElementsByClassName("tab-button");
+                for (var i = 0; i < buttons.length; i++) {
+                    if (buttons[i].getAttribute('onclick').includes(lastActiveTab)) {
+                        buttons[i].classList.add("active");
+                    } else {
+                        buttons[i].classList.remove("active");
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
